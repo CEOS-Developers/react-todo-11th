@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import ProfileCard from '../components/profile-card';
-import styled from 'styled-components';
+import ProfileCard from "../components/profile-card";
+import styled from "styled-components";
 
 export default function Home() {
   return (
     <Wrapper>
-      나는 홈이야
+      나는 홈이야d
       <ProfileCard />
     </Wrapper>
   );

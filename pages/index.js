@@ -23,7 +23,7 @@ export default function Home() {
 }
 
 const Wrapper = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   background-color: ${color};
   padding: 4rem 5rem;
 `;

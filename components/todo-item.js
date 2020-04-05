@@ -36,7 +36,7 @@ const Row = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 3rem;
-  padding: 1rem;
+  padding: 1rem 2rem;
   border: solid 1px black;
 `;
 const Label = styled.p`

@@ -21,12 +21,11 @@ export default function TodoInput(props) {
   };
 
   const onClick = () => {
-    if (todo.time.length !== 8) {
-      alert("날짜를 확인해 주세요!");
+    if (todo.time.length == 0 || todo.content == 0) {
+      alert("모든 항목을 입력해주세요!");
       return;
-    }
-    if (todo.content == 0) {
-      alert("Todo를 확인해 주세요!");
+    } else if (todo.time.length < 8 || todo.time.length > 8) {
+      alert("날짜를 올바른 형식으로 입력해주세요!");
       return;
     }
 
@@ -66,12 +65,13 @@ export default function TodoInput(props) {
 
 const FormWrapper = styled.div`
   flex: 1;
-  border: solid 1px ${mainColor};
+  border: solid 1px black;
   width: 100%;
   padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 37rem;
 `;
 
 const Row = styled.div`

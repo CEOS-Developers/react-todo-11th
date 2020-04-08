@@ -11,12 +11,16 @@ export default function Home() {
       <Title>리액트-투두</Title>
       <Contents>
         <TodoInput />
+        <BlankSpace />
         <TodoList />
       </Contents>
     </Wrapper>
   );
 }
 
+const BlankSpace = styled.div`
+  flex: 0.3;
+`;
 const Title = styled.p`
   font-size: 3rem;
   font-weight: 600;

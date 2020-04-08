@@ -7,5 +7,5 @@ export default function TodoItem() {
 
 const Wrapper = styled.div`
   font-size: 18px;
-  border: solid 1px;
+  flex: 1 1 0%;
 `;

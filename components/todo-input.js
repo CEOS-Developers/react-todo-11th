@@ -1,21 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 export default function TodoInput() {
-  function handleClick(e) {
-    alert("hello");
-  }
+  // 날짜와 할 일을 저장하고 상위 컴포넌트로 전달하기 위해 state 사용
+  const [date, setDate] = useState("");
+  const [todo, setTodo] = useState();
+
+  const onChangeTodo = (e) => {
+    setTodo(e.target.value);
+  };
+  const onChangeDate = (e) => {
+    if (e.target.value <= 99999999) setDate(e.target.value);
+  };
   return (
     <Wrapper>
       <Time>
-        <TimeText>시간</TimeText>
-        <TimeInput></TimeInput>
+        <TimeText>시간 is {date}</TimeText>
+        <TimeInput
+          placeholder="날짜를 입력하세요(ex.20200425)"
+          type="number"
+          value={date}
+          onChange={onChangeDate}
+        ></TimeInput>
       </Time>
       <Todo>
-        <TodoText>TODO</TodoText>
-        <TodoInputText></TodoInputText>
+        <TodoText>TODO is {todo}</TodoText>
+        <TodoInputText value={todo} onChange={onChangeTodo}></TodoInputText>
       </Todo>
-      <RegisterBtn onClick={handleClick}>등록</RegisterBtn>
+      <RegisterBtn
+        onClick={() => {
+          alert(date);
+          setDate(date);
+        }}
+      >
+        등록
+      </RegisterBtn>
     </Wrapper>
   );
 }
@@ -49,7 +68,7 @@ const TimeText = styled.p`
 `;
 
 const TimeInput = styled.input.attrs({
-  placeholder: "날짜를 입력하세요(ex.20200425)",
+  max: 9999,
 })`
   width: 80%;
   border: 1px solid rgb(97, 97, 97);
@@ -74,6 +93,7 @@ const TodoText = styled.p`
 const TodoInputText = styled.input.attrs({
   placeholder: "할 일을 입력하세요(ex.현우 생일)",
 })`
+  textalign: "right";
   width: 80%;
   height: 30vh;
   resize: none;
@@ -81,7 +101,7 @@ const TodoInputText = styled.input.attrs({
   padding: 0.5rem 0.8rem;
 `;
 
-const RegisterBtn = styled.button`
+const RegisterBtn = styled.button.attrs({})`
   color: white;
   background: rgb(97, 97, 97);
   font-size: 1.5rem;

@@ -8,23 +8,33 @@ import styled from "styled-components";
 export default function Home() {
   return (
     <Wrapper>
+      <Title>리액트-투두</Title>
       <Contents>
         <TodoInput />
+        <EmtpySpace />
         <TodoList />
       </Contents>
     </Wrapper>
   );
 }
+const Title = styled.div`
+  font-size: 3rem;
+  font-weight: 600;
+  padding: 0px;
+  margin: 0px 0px 3rem;
+`;
 
 const Wrapper = styled.div`
-  height: 100vh;
+  min-height: 100vh;
+  background-color: rgb(155, 197, 195);
+  padding: 4rem 5rem;
+  color: white;
 `;
 
 const Contents = styled.div`
-  border: solid 1px black;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 10px 20px;
-  margin: 20px 10px;
+`;
+
+const EmtpySpace = styled.div`
+  flex: 0.3;
 `;

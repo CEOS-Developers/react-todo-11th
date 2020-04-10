@@ -2,16 +2,19 @@ import React from "react";
 import styled from "styled-components";
 
 export default function TodoItem(props) {
-  const { date, todo } = props;
+  const { date, todo, id, deleteItem } = props;
+
   return (
     <Wrapper>
-      <ItemCard>
-        <TodoText>{todo}</TodoText>
-        <DataBtn>
+      <TodoItemCard>
+        <TodoData>{todo}</TodoData>
+        <DateAndBtn>
           {date}
-          <DelectBtn>완료</DelectBtn>
-        </DataBtn>
-      </ItemCard>
+          <DelectBtn value={id} onClick={deleteItem}>
+            완료
+          </DelectBtn>
+        </DateAndBtn>
+      </TodoItemCard>
     </Wrapper>
   );
 }
@@ -20,7 +23,7 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
-const ItemCard = styled.div`
+const TodoItemCard = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -31,7 +34,7 @@ const ItemCard = styled.div`
   border: 1px solid black;
 `;
 
-const TodoText = styled.p`
+const TodoData = styled.p`
   font-size: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -39,7 +42,7 @@ const TodoText = styled.p`
   margin: 0px;
 `;
 
-const DataBtn = styled.p`
+const DateAndBtn = styled.p`
   font-size: 1.5rem;
   display: flex;
   flex-direction: column;

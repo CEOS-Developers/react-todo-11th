@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import TodoInput from "../components/todo-input";
 import TodoList from "../components/todo-list";
@@ -6,26 +6,46 @@ import TodoList from "../components/todo-list";
 import styled from "styled-components";
 
 export default function Home() {
-  const [date, setDate] = useState();
-  const [todo, setTodo] = useState();
+  const [date, setDate] = useState("");
+  const [todo, setTodo] = useState("");
+  const [todoID, setTodoID] = useState(0);
   const [todoList, setTodoList] = useState([]);
 
+  // 값이 바뀔때마다 실행
   const onChangeTodo = (e) => {
     setTodo(e.target.value);
   };
   const onChangeDate = (e) => {
-    if (e.target.value <= 99999999) setDate(e.target.value);
+    //입력을 8자리 넘어가면 받지 않도록 설정
+    if (e.target.value == "" || String(e.target.value).length <= 8)
+      setDate(e.target.value);
   };
-  useEffect(() => {
-    console.log(todoList);
-  });
+
+  // 투두 데이터 추가
   const addItem = (e) => {
     e.preventDefault();
+    if (date == "" || todo == "") {
+      alert("데이터 입력해주세요!");
+      return;
+    } else if (String(date).length !== 8) {
+      alert("날짜를 올바른 형식으로 입력해주세요!");
+      return;
+    }
+
     e.target.reset();
-    todoList.push({ date: date, todo: todo });
+    todoList.push({ date: date, todo: todo, id: todoID });
     setDate();
     setTodo();
-    console.log(todoList);
+    setTodoID(todoID + 1);
+    alert("입력되었습니다!");
+  };
+  //투두 데이터 삭제
+  const deleteItem = (e) => {
+    const id = e.target.value;
+    const newTodoList = todoList.filter(
+      (todoData) => todoData.id !== Number(id)
+    );
+    setTodoList(newTodoList);
   };
   return (
     <Wrapper>
@@ -33,13 +53,13 @@ export default function Home() {
       <Contents>
         <TodoInput
           date={date}
-          onChangeTodo={onChangeTodo}
           todo={todo}
           onChangeDate={onChangeDate}
+          onChangeTodo={onChangeTodo}
           addItem={addItem}
         />
         <EmtpySpace />
-        <TodoList todoList={todoList} />
+        <TodoList todoList={todoList} deleteItem={deleteItem} />
       </Contents>
     </Wrapper>
   );

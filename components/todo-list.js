@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 import TodoItem from "./todo-item";
 
 export default function TodoList(props) {
-  const { todoList } = props;
+  const { todoList, deleteItem } = props;
+
   return (
     <Wrapper>
-      {todoList.map((todoData) => (
-        <TodoItem
-          key={todoData.date}
-          date={todoData.date}
-          todo={todoData.todo}
-        />
-      ))}
+      {todoList
+        .sort((a, b) => {
+          return a.date - b.date;
+        })
+        .map((todoData) => (
+          <TodoItem
+            key={todoData.id}
+            id={todoData.id}
+            date={todoData.date}
+            todo={todoData.todo}
+            deleteItem={deleteItem}
+          />
+        ))}
     </Wrapper>
   );
 }

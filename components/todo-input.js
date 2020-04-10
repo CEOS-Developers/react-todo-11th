@@ -6,19 +6,19 @@ export default function TodoInput(props) {
 
   return (
     <Wrapper onSubmit={addItem}>
-      <Time>
-        <TimeText>시간</TimeText>
-        <TimeInput
+      <DateWrapper>
+        <DateDesc>시간</DateDesc>
+        <DateInput
           placeholder="날짜를 입력하세요(ex.20200425)"
           type="number"
           value={date}
           onChange={onChangeDate}
-        ></TimeInput>
-      </Time>
-      <Todo>
-        <TodoText>TODO</TodoText>
+        ></DateInput>
+      </DateWrapper>
+      <TodoWrapper>
+        <TodoDesc>TODO</TodoDesc>
         <TodoInputText value={todo} onChange={onChangeTodo}></TodoInputText>
-      </Todo>
+      </TodoWrapper>
       <RegisterBtn>등록</RegisterBtn>
     </Wrapper>
   );
@@ -37,7 +37,7 @@ const Wrapper = styled.form`
   flex: 1;
 `;
 
-const Time = styled.div`
+const DateWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -46,19 +46,19 @@ const Time = styled.div`
   margin-bottom: 3rem;
 `;
 
-const TimeText = styled.p`
+const DateDesc = styled.p`
   font-size: 1.5rem;
   padding: 0px;
   margin: 0px;
 `;
 
-const TimeInput = styled.input.attrs({})`
+const DateInput = styled.input.attrs({})`
   width: 80%;
   border: 1px solid rgb(97, 97, 97);
   padding: 0.5rem 0.8rem;
 `;
 
-const Todo = styled.div`
+const TodoWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -67,7 +67,7 @@ const Todo = styled.div`
   margin-bottom: 3rem;
 `;
 
-const TodoText = styled.p`
+const TodoDesc = styled.p`
   font-size: 1.5rem;
   padding: 0px;
   margin: 0px;

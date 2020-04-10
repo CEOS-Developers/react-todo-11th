@@ -9,7 +9,7 @@ export default function TodoInput(props) {
       <DateWrapper>
         <DateDesc>시간</DateDesc>
         <DateInput
-          placeholder="날짜를 입력하세요(ex.20200425)"
+          placeholder="날짜를 입력하세요 (ex.20200425)"
           type="number"
           value={date || ""}
           onChange={onChangeDate}
@@ -18,6 +18,7 @@ export default function TodoInput(props) {
       <TodoWrapper>
         <TodoDesc>TODO</TodoDesc>
         <TodoInputText
+          placeholder="할 일을 입력하세요 (ex.현우 생일 파티)"
           value={todo || ""}
           onChange={onChangeTodo}
         ></TodoInputText>
@@ -56,7 +57,7 @@ const DateDesc = styled.p`
   margin: 0px;
 `;
 
-const DateInput = styled.input.attrs({})`
+const DateInput = styled.input`
   width: 80%;
   border: 1px solid rgb(97, 97, 97);
   padding: 0.5rem 0.8rem;
@@ -77,18 +78,14 @@ const TodoDesc = styled.p`
   margin: 0px;
 `;
 
-const TodoInputText = styled.input.attrs({
-  placeholder: "할 일을 입력하세요(ex.현우 생일)",
-})`
-  textalign: "right";
+const TodoInputText = styled.textarea.attrs({})`
   width: 80%;
   height: 30vh;
-  resize: none;
   border: 1px solid rgb(97, 97, 97);
   padding: 0.5rem 0.8rem;
 `;
 
-const RegisterBtn = styled.button.attrs({})`
+const RegisterBtn = styled.button`
   color: white;
   background: rgb(97, 97, 97);
   font-size: 1.5rem;

@@ -33,8 +33,8 @@ export default function Home() {
 
     e.target.reset();
     todoList.push({ date: date, todo: todo, id: todoID });
-    setDate();
-    setTodo();
+    setDate("");
+    setTodo("");
     setTodoID(todoID + 1);
     alert("입력되었습니다!");
   };

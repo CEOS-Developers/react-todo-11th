@@ -8,7 +8,7 @@ import styled from "styled-components";
 export default function Home() {
 
   const [todos, setTodos] = useState([]);
-  const nextId = useRef(1);
+  const [index, setIndex] = useState(1);
 
   const addTodo = ({content, date}) => {
     if ((content === undefined) || (date === undefined)) {
@@ -22,12 +22,13 @@ export default function Home() {
     }
 
     const todo = {
-      id: nextId,
+      id: index,
       content,
       date,
       checked: false
     }
     setTodos(todos.concat(todo)); 
+    setIndex(index + 1);
     alert('입력 완료!')
   }
 

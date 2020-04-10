@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export default function TodoInput(props) {
   const { date, todo, onChangeTodo, onChangeDate, addItem } = props;
-
+  // value 값이 처음에 없어서 undefined가 되면 오류가 발생할 수 있다고하므로, || ""을 추가해준다.
   return (
     <Wrapper onSubmit={addItem}>
       <DateWrapper>
@@ -11,13 +11,16 @@ export default function TodoInput(props) {
         <DateInput
           placeholder="날짜를 입력하세요(ex.20200425)"
           type="number"
-          value={date}
+          value={date || ""}
           onChange={onChangeDate}
         ></DateInput>
       </DateWrapper>
       <TodoWrapper>
         <TodoDesc>TODO</TodoDesc>
-        <TodoInputText value={todo} onChange={onChangeTodo}></TodoInputText>
+        <TodoInputText
+          value={todo || ""}
+          onChange={onChangeTodo}
+        ></TodoInputText>
       </TodoWrapper>
       <RegisterBtn>등록</RegisterBtn>
     </Wrapper>

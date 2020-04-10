@@ -17,8 +17,7 @@ export default function Home() {
   };
   const onChangeDate = (e) => {
     //입력을 8자리 넘어가면 받지 않도록 설정
-    if (e.target.value == "" || String(e.target.value).length <= 8)
-      setDate(e.target.value);
+    if (String(e.target.value).length <= 8) setDate(e.target.value);
   };
 
   // 투두 데이터 추가

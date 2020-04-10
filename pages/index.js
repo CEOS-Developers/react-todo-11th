@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import TodoInput from "../components/todo-input";
+import MemoizedTodoInput from "../components/todo-input";
 import TodoList from "../components/todo-list";
 
 import styled from "styled-components";
@@ -24,7 +24,7 @@ export default function Home() {
   const addItem = (e) => {
     e.preventDefault();
     if (date == "" || todo == "") {
-      alert("데이터 입력해주세요!");
+      alert("모든 항목을 입력해주세요!");
       return;
     } else if (String(date).length !== 8) {
       alert("날짜를 올바른 형식으로 입력해주세요!");
@@ -50,7 +50,7 @@ export default function Home() {
     <Wrapper>
       <Title>리액트-투두</Title>
       <Contents>
-        <TodoInput
+        <MemoizedTodoInput
           date={date}
           todo={todo}
           onChangeDate={onChangeDate}

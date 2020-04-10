@@ -26,6 +26,7 @@ export default function TodoInput(props) {
     </Wrapper>
   );
 }
+export const MemoizedTodoInput = React.memo(TodoInput);
 
 const Wrapper = styled.form`
   width: 100%;

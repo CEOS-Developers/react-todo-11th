@@ -1,19 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function TodoItem({ task, date }) {
+export default function TodoItem({ id, task, date, onClickComplete }) {
   return (
     <Wrapper>
       <TodoContents>{task}</TodoContents>
       <CompleteSection>
         {date}
-        <Complete>완료</Complete>
+        <Complete onClick={onClickComplete}>완료</Complete>
       </CompleteSection>
     </Wrapper>
   );
 }
 const Complete = styled.button`
-  color: white;
+  )color: white;
   background-color: rgb(97, 97, 97);
   font-size: 1.5rem;
   outline: none;

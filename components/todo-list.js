@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 import TodoItem from "./todo-item";
 
-export default function TodoList({ todos }) {
+export default function TodoList({ todos, onClickComplete }) {
   return (
     <Wrapper>
       {todos.map((todo) => (
-        <TodoItem key={todo.id} {...todo} />
+        <TodoItem key={todo.id} {...todo} onClickComplete={onClickComplete} />
       ))}
     </Wrapper>
   );

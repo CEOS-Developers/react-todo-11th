@@ -21,17 +21,14 @@ export default function Home() {
   const onChangeTask = (e) => {
     setTask(e.target.value);
     taskFlag++;
-    console.log(taskFlag);
   };
   const onChangeDate = (e) => {
     setDate(e.target.value);
     dateFlag++;
-    console.log(dateFlag);
   };
 
   const addTodo = (e) => {
     if (dateFlag === 0 || taskFlag === 0) {
-      console.log(dateFlag + taskFlag);
       alert("모든 항목을 입력해주세요!");
     } else {
       if (date.length === 8 && date > 20200101) {
@@ -53,6 +50,12 @@ export default function Home() {
       }
     }
   };
+  const onClickComplete = (id) => {
+    const newTodos = [...todos];
+    newTodos.splice(id, 1);
+    setTodoList(newTodos);
+    console.log("완료클릭");
+  };
 
   return (
     <Wrapper>
@@ -67,7 +70,7 @@ export default function Home() {
           addTodo={addTodo}
         />
         <BlankSpace />
-        <TodoList todos={todos} />
+        <TodoList todos={todos} onClickComplete={onClickComplete} />
       </Contents>
     </Wrapper>
   );

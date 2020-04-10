@@ -4,8 +4,22 @@ import styled from "styled-components";
 import TodoList from "./todo-list.js";
 
 export default function TodoInput() {
-  const [todo, setTodo] = useState("");
+  const [task, setTask] = useState("");
   const [date, setDate] = useState("");
+
+  const [todos, setInputTodo] = useState([]);
+
+  const addTodo = () => {
+    setInputTodo([
+      ...todos,
+      {
+        id: todos.length,
+        task: { task },
+        date: { date },
+      },
+    ]);
+    console.log(todos);
+  };
 
   return (
     <Wrapper>
@@ -23,19 +37,13 @@ export default function TodoInput() {
         <TodoLabel>TODO</TodoLabel>
         <TaskTextArea
           placeholder="할 일을 입력하세요"
-          value={todo}
+          value={task}
           onChange={(e) => {
-            setTodo(e.target.value);
+            setTask(e.target.value);
           }}
         />
       </TaskInput>
-      <Submit
-        onClick={(e) => {
-          e.preventDefault();
-        }}
-      >
-        등록
-      </Submit>
+      <Submit onClick={addTodo}>등록</Submit>
     </Wrapper>
   );
 }

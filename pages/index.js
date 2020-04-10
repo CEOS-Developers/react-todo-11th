@@ -9,8 +9,9 @@ export default function Home() {
   const [date, setDate] = useState();
   const [task, setTask] = useState();
   const [todos, setTodoList] = useState([]);
-  let taskFlag,
-    dateFlag = 0;
+
+  let taskFlag = 0;
+  let dateFlag = 0;
 
   const onChangeTask = (e) => {
     setTask(e.target.value);
@@ -23,17 +24,19 @@ export default function Home() {
     console.log(dateFlag);
   };
 
-  const addTodo = () => {
+  const addTodo = (e) => {
     setTodoList([
       ...todos,
       {
         id: todos.length,
-        task: { task },
-        date: { date },
+        date,
+        task,
       },
     ]);
     alert("입력 완료!");
     console.log(todos);
+    setDate("");
+    setTask("");
   };
 
   return (

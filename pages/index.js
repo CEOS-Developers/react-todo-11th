@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import TodoInput from "../components/todo-input";
 import TodoList from "../components/todo-list";
@@ -6,13 +6,40 @@ import TodoList from "../components/todo-list";
 import styled from "styled-components";
 
 export default function Home() {
+  const [date, setDate] = useState();
+  const [todo, setTodo] = useState();
+  const [todoList, setTodoList] = useState([]);
+
+  const onChangeTodo = (e) => {
+    setTodo(e.target.value);
+  };
+  const onChangeDate = (e) => {
+    if (e.target.value <= 99999999) setDate(e.target.value);
+  };
+  useEffect(() => {
+    console.log(todoList);
+  });
+  const addItem = (e) => {
+    e.preventDefault();
+    e.target.reset();
+    todoList.push({ date: date, todo: todo });
+    setDate();
+    setTodo();
+    console.log(todoList);
+  };
   return (
     <Wrapper>
       <Title>리액트-투두</Title>
       <Contents>
-        <TodoInput />
+        <TodoInput
+          date={date}
+          onChangeTodo={onChangeTodo}
+          todo={todo}
+          onChangeDate={onChangeDate}
+          addItem={addItem}
+        />
         <EmtpySpace />
-        <TodoList />
+        <TodoList todoList={todoList} />
       </Contents>
     </Wrapper>
   );

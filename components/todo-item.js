@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function TodoItem() {
+export default function TodoItem(props) {
+  const { date, todo } = props;
   return (
     <Wrapper>
       <ItemCard>
-        <TodoText>할일</TodoText>
+        <TodoText>{todo}</TodoText>
         <DataBtn>
-          20202020
+          {date}
           <DelectBtn>완료</DelectBtn>
         </DataBtn>
       </ItemCard>

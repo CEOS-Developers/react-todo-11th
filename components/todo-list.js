@@ -3,10 +3,17 @@ import styled from "styled-components";
 
 import TodoItem from "./todo-item";
 
-export default function TodoList() {
+export default function TodoList(props) {
+  const { todoList } = props;
   return (
     <Wrapper>
-      <TodoItem />
+      {todoList.map((todoData) => (
+        <TodoItem
+          key={todoData.date}
+          date={todoData.date}
+          todo={todoData.todo}
+        />
+      ))}
     </Wrapper>
   );
 }

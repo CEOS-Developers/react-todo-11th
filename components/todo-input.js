@@ -1,21 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-export default function TodoInput() {
-  // 날짜와 할 일을 저장하고 상위 컴포넌트로 전달하기 위해 state 사용
-  const [date, setDate] = useState("");
-  const [todo, setTodo] = useState();
+export default function TodoInput(props) {
+  const { date, todo, onChangeTodo, onChangeDate, addItem } = props;
 
-  const onChangeTodo = (e) => {
-    setTodo(e.target.value);
-  };
-  const onChangeDate = (e) => {
-    if (e.target.value <= 99999999) setDate(e.target.value);
-  };
   return (
-    <Wrapper>
+    <Wrapper onSubmit={addItem}>
       <Time>
-        <TimeText>시간 is {date}</TimeText>
+        <TimeText>시간</TimeText>
         <TimeInput
           placeholder="날짜를 입력하세요(ex.20200425)"
           type="number"
@@ -24,22 +16,15 @@ export default function TodoInput() {
         ></TimeInput>
       </Time>
       <Todo>
-        <TodoText>TODO is {todo}</TodoText>
+        <TodoText>TODO</TodoText>
         <TodoInputText value={todo} onChange={onChangeTodo}></TodoInputText>
       </Todo>
-      <RegisterBtn
-        onClick={() => {
-          alert(date);
-          setDate(date);
-        }}
-      >
-        등록
-      </RegisterBtn>
+      <RegisterBtn>등록</RegisterBtn>
     </Wrapper>
   );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -67,9 +52,7 @@ const TimeText = styled.p`
   margin: 0px;
 `;
 
-const TimeInput = styled.input.attrs({
-  max: 9999,
-})`
+const TimeInput = styled.input.attrs({})`
   width: 80%;
   border: 1px solid rgb(97, 97, 97);
   padding: 0.5rem 0.8rem;

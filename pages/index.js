@@ -12,12 +12,6 @@ export default function Home() {
   const [task, setTask] = useState();
   const [todos, setTodoList] = useState([]);
 
-  const stateReset = (e) => {
-    dateFlag = 0;
-    taskFlag = 0;
-    setDate("");
-    setTask("");
-  };
   const onChangeTask = (e) => {
     setTask(e.target.value);
     taskFlag++;
@@ -27,6 +21,12 @@ export default function Home() {
     dateFlag++;
   };
 
+  const stateReset = (e) => {
+    dateFlag = 0;
+    taskFlag = 0;
+    setDate("");
+    setTask("");
+  };
   const addTodo = (e) => {
     if (dateFlag === 0 || taskFlag === 0) {
       alert("모든 항목을 입력해주세요!");
@@ -47,10 +47,11 @@ export default function Home() {
       }
     }
   };
+
   const onClickComplete = (id) => {
     const newTodos = [...todos];
-    newTodos.splice(id, 1);
-    setTodoList(newTodos);
+    setTodoList(newTodos.filter((todo) => todo.id !== id));
+    console.log(newTodos);
   };
 
   return (

@@ -1,21 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
+import TodoList from "./todo-list.js";
+
 export default function TodoInput() {
+  const [todo, setTodo] = useState("");
+  const [date, setDate] = useState("");
+
   return (
     <Wrapper>
-      <TimeInput>
-        <Time>시간</Time>
-        <TimeInputArea placeholder="날짜를 입력하세요 (ex.20200404)" />
-      </TimeInput>
+      <DateInput>
+        <DateLabel>날짜</DateLabel>
+        <DateInputArea
+          placeholder="날짜를 입력하세요 (ex.20200404)"
+          value={date}
+          onChange={(e) => {
+            setDate(e.target.value);
+          }}
+        />
+      </DateInput>
       <TaskInput>
-        <Todo>TODO</Todo>
-        <TaskTextArea placeholder="할 일을 입력하세요" />
+        <TodoLabel>TODO</TodoLabel>
+        <TaskTextArea
+          placeholder="할 일을 입력하세요"
+          value={todo}
+          onChange={(e) => {
+            setTodo(e.target.value);
+          }}
+        />
       </TaskInput>
-      <Submit>등록</Submit>
+      <Submit
+        onClick={(e) => {
+          e.preventDefault();
+        }}
+      >
+        등록
+      </Submit>
     </Wrapper>
   );
 }
+//배열에 담아서 List에게 통으로 넘기기
 const Submit = styled.button`
   color: white;
   background-color: rgb(97, 97, 97);
@@ -28,12 +52,12 @@ const Submit = styled.button`
   padding: 0.5rem 1rem;
   border-radius: 0.3rem;
 `;
-const Time = styled.p`
+const DateLabel = styled.p`
   font-size: 1.5rem;
   padding: 0px;
   margin: 0px;
 `;
-const TimeInputArea = styled.input`
+const DateInputArea = styled.input`
   width: 80%;
   border-width: 1px;
   border-style: solid;
@@ -41,7 +65,7 @@ const TimeInputArea = styled.input`
   border-image: initial;
   padding: 0.5rem 0.8rem;
 `;
-const Todo = styled.p`
+const TodoLabel = styled.p`
   font-size: 1.5rem;
   padding: 0px;
   margin: 0px;
@@ -56,7 +80,7 @@ const TaskTextArea = styled.textarea`
   border-image: initial;
   padding: 0.5rem 0.8rem;
 `;
-const TimeInput = styled.div`
+const DateInput = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;

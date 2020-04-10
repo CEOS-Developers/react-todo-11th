@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function TodoItem() {
+export default function TodoItem(props) {
   return (
     <Wrapper>
-      <TodoContents>내용</TodoContents>
+      <TodoContents>{props.task}</TodoContents>
       <CompleteSection>
-        날짜
+        {props.date}
         <Complete>완료</Complete>
       </CompleteSection>
     </Wrapper>

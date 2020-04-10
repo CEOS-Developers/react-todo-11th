@@ -1,4 +1,4 @@
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState} from 'react';
 
 import TodoInput from "../components/todo-input";
 import TodoList from "../components/todo-list";
@@ -8,9 +8,7 @@ import styled from "styled-components";
 export default function Home() {
 
   const [todos, setTodos] = useState([]);
-  const nextId = useRef(0);
-
-  const [counter, setCounter] = useState(1);
+  const nextId = useRef(1);
 
   const addTodo = ({content, date}) => {
     if ((content === undefined) || (date === undefined)) {
@@ -30,11 +28,9 @@ export default function Home() {
       checked: false
     }
     setTodos(todos.concat(todo)); 
-    nextId.current += 1;
-
     alert('입력 완료!')
   }
-  
+
   const todoRemove = (id) => {
     setTodos(todos.filter(todo => todo.id !== id))
   }

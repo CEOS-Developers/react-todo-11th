@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import TodoInput from "../components/todo-input";
 import TodoList from "../components/todo-list";
@@ -6,13 +6,50 @@ import TodoList from "../components/todo-list";
 import styled from "styled-components";
 
 export default function Home() {
+  const [date, setDate] = useState();
+  const [task, setTask] = useState();
+  const [todos, setTodoList] = useState([]);
+  let taskFlag,
+    dateFlag = 0;
+
+  const onChangeTask = (e) => {
+    setTask(e.target.value);
+    taskFlag++;
+    console.log(taskFlag);
+  };
+  const onChangeDate = (e) => {
+    setDate(e.target.value);
+    dateFlag++;
+    console.log(dateFlag);
+  };
+
+  const addTodo = () => {
+    setTodoList([
+      ...todos,
+      {
+        id: todos.length,
+        task: { task },
+        date: { date },
+      },
+    ]);
+    alert("입력 완료!");
+    console.log(todos);
+  };
+
   return (
     <Wrapper>
       <Title>리액트-투두</Title>
       <Contents>
-        <TodoInput />
+        <TodoInput
+          date={date}
+          task={task}
+          onChangeDate={onChangeDate}
+          onChangeTask={onChangeTask}
+          todos={todos}
+          addTodo={addTodo}
+        />
         <BlankSpace />
-        <TodoList />
+        <TodoList todos={todos} />
       </Contents>
     </Wrapper>
   );

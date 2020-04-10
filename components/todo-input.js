@@ -1,36 +1,22 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import TodoList from "./todo-list.js";
-
-export default function TodoInput() {
-  const [task, setTask] = useState("");
-  const [date, setDate] = useState("");
-
-  const [todos, setInputTodo] = useState([]);
-
-  const addTodo = () => {
-    setInputTodo([
-      ...todos,
-      {
-        id: todos.length,
-        task: { task },
-        date: { date },
-      },
-    ]);
-    console.log(todos);
-  };
-
+export default function TodoInput({
+  date,
+  task,
+  addTodo,
+  onChangeDate,
+  onChangeTask,
+}) {
   return (
     <Wrapper>
       <DateInput>
         <DateLabel>날짜</DateLabel>
         <DateInputArea
           placeholder="날짜를 입력하세요 (ex.20200404)"
+          type="number"
           value={date}
-          onChange={(e) => {
-            setDate(e.target.value);
-          }}
+          onChange={onChangeDate}
         />
       </DateInput>
       <TaskInput>
@@ -38,16 +24,14 @@ export default function TodoInput() {
         <TaskTextArea
           placeholder="할 일을 입력하세요"
           value={task}
-          onChange={(e) => {
-            setTask(e.target.value);
-          }}
+          onChange={onChangeTask}
         />
       </TaskInput>
       <Submit onClick={addTodo}>등록</Submit>
     </Wrapper>
   );
 }
-//배열에 담아서 List에게 통으로 넘기기
+
 const Submit = styled.button`
   color: white;
   background-color: rgb(97, 97, 97);

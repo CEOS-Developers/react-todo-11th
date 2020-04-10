@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function TodoItem(props) {
+export default function TodoItem({ task, date }) {
   return (
     <Wrapper>
-      <TodoContents>{props.task}</TodoContents>
+      <TodoContents>{task}</TodoContents>
       <CompleteSection>
-        {props.date}
+        {date}
         <Complete>완료</Complete>
       </CompleteSection>
     </Wrapper>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 
 import TodoInput from "../components/todo-input";
 import TodoList from "../components/todo-list";
@@ -8,26 +8,11 @@ import styled from "styled-components";
 export default function Home() {
 
   const [todos, setTodos] = useState([]);
+  const nextId = useRef(0);
+
+  const [counter, setCounter] = useState(1);
 
   const addTodo = ({content, date}) => {
-    if ((content === undefined) && (date === undefined)) {
-      alert('모든 항목을 입력해주세요!');
-      return;
-    }
-
-    else if ((content !== undefined) && date.length != 8){
-      alert('날짜를 올바른 형식으로 입력해주세요!');
-      return;
-    }
-    
-    setTodos([...todos, {content, date}])
-
-    alert('입력 완료!')
-  }
-
-  const completeTodo = () => {
-    todo
-  }
 
   return (
     <Wrapper>
@@ -35,7 +20,7 @@ export default function Home() {
       <Contents>
         <TodoInput addTodo = {addTodo}/>
         <Space/>
-        <TodoList completeTodo = {completeTodo}/>
+        <TodoList todos={todos} todoRemove = {todoRemove}/>
       </Contents>
     </Wrapper>
   );

@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 
 import styled from "styled-components";
 
-export default function TodoItem({content, day}) {
+export default function TodoItem({ id, content, date, todoRemove }) {
   return (
     <Wrapper>
       <TodoItemBox>
-        <Todo></Todo>
-        <DayClear>
-          <ClearBtn>완료</ClearBtn>
-        </DayClear>
+        <Todo>{content}</Todo>
+        <Day>{date}
+        <ClearBtn onClick={(() => {todoRemove(id)})}>완료</ClearBtn>
+        </Day>
       </TodoItemBox>
     </Wrapper>
     );
@@ -41,7 +41,7 @@ const Todo= styled.p`
   margin: 0px;
 `;
 
-const DayClear= styled.p`
+const Day= styled.p`
   font-size: 1.5rem;
   display: flex;
   flex-direction: column;

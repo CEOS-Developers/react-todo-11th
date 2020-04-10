@@ -1,30 +1,9 @@
-# react-todo-11th
+ 확실히 저번 과제를 통해서 css구성은 매우 숙달됬지만 아직 props 전달은 미숙하다고 생각했습니다.
+특히 이번 과제에서 처음에는 input에서 data들을 바로 index로 올려주는 식으로 생각했다가 싹다 갈아엎고 다시 했습니다.
+index에서 input태그에 함수를 인자를 넣어주고 data를 받는 식으로 하니 확실히 전체적인 관리가 편해진 것 같습니다.
+또한 왜 구글링 할때마다 extend Component와 render()가 나오는지 궁금했었는데 지금까지 Hook를 사용하고 있는지 모르고 계속
+사용했네요... 
 
-## 실행 방법
-
-```
-npm install
-npm run dev
-```
-
-- npm install : 필요한 모든 패키지를 설치합니다. 처음 1번만 실행하면 됩니다.
-- npm run dev : react 어플리케이션을 브라우저에서 실행합니다.
-
-## 배포 방법
-
-- now에 회원가입하고 now를 설치합니다.
-
-1. https://zeit.co 에서 회원가입합니다.
-2. 터미널에서 npm i -g now를 입력해 now를 글로벌로 설치합니다.
-3. 명령 프롬프트에서 프로젝트 폴더에 들어간 후 now를 입력합니다.
-4. ID/PW를 입력합니다.
-5. zeit 가입시 입력한 이메일에서 인증 링크를 클릭합니다. <인증완료>
-6. 다시 프로젝트 폴더에서 now를 입력하면 자동으로 생성된 url에 배포됩니다!
-
-## 미션 설명
-
-[미션 설명](./docs/mission-description/README.md)
-
-## 미션 제출 방법
-
-[미션 제출 방법](./docs/how-to-submit/README.md)
+확실히 Hook를 사용하니 전부다 function으로만 해결하게 되서 가독성도 올라가고 Hook자체 기능또한 다양하고 좋았던 것 같습니다.
+처음에 todoRemove를 구성할 때는 useRef를 id로 주고 filter로 처리하려 했는데 안돼서 하는 수 없이 map으로 구현했습니다.
+또 number타입 일때는 length기능들이 다 막혀서 String으로 변환하고 했는데 코드 돌아가는데는 딱히 상관없던 것 같습니다.

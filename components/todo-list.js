@@ -4,10 +4,11 @@ import TodoItem from "./todo-item";
 
 import styled from "styled-components";
 
-export default function TodoList({completeTodo}) {
+export default function TodoList({todos, todoRemove}) {
+
   return (
     <Wrapper>
-      <TodoItem />
+  
     </Wrapper>
   );
 }
@@ -16,3 +17,4 @@ const Wrapper = styled.div`
   font-size: 18px;
   flex: 1 1 0%;
 `;
+

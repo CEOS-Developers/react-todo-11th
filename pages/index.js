@@ -5,14 +5,19 @@ import TodoList from "../components/todo-list";
 
 import styled from "styled-components";
 
+let taskFlag = 0;
+let dateFlag = 0;
 export default function Home() {
   const [date, setDate] = useState();
   const [task, setTask] = useState();
   const [todos, setTodoList] = useState([]);
 
-  let taskFlag = 0;
-  let dateFlag = 0;
-
+  const stateReset = (e) => {
+    dateFlag = 0;
+    taskFlag = 0;
+    setDate("");
+    setTask("");
+  };
   const onChangeTask = (e) => {
     setTask(e.target.value);
     taskFlag++;
@@ -25,18 +30,24 @@ export default function Home() {
   };
 
   const addTodo = (e) => {
-    setTodoList([
-      ...todos,
-      {
-        id: todos.length,
-        date,
-        task,
-      },
-    ]);
-    alert("입력 완료!");
-    console.log(todos);
-    setDate("");
-    setTask("");
+    if (dateFlag === 0 || taskFlag === 0) {
+      console.log(dateFlag + taskFlag);
+      alert("모든 항목을 입력해주세요!");
+    } else {
+      setTodoList([
+        ...todos,
+        {
+          id: todos.length,
+          date,
+          task,
+        },
+      ]);
+
+      stateReset(e);
+      alert("입력 완료!");
+
+      console.log(todos);
+    }
   };
 
   return (

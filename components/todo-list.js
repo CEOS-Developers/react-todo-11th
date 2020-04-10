@@ -8,7 +8,7 @@ export default function TodoList({todos, todoRemove}) {
 
   return (
     <Wrapper>
-  
+    {todos.map(todo => <TodoItem key={todo.id} {...todo} todoRemove={todoRemove}/>)}
     </Wrapper>
   );
 }

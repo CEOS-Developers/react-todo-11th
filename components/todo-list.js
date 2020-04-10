@@ -1,19 +1,18 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
 
 import TodoItem from "./todo-item";
 
-export default function TodoList() {
+import styled from "styled-components";
+
+export default function TodoList({completeTodo}) {
   return (
     <Wrapper>
-      Todo list가 들어가는 자리입니다!
       <TodoItem />
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  border: solid 1px;
   font-size: 18px;
-  flex: 1;
+  flex: 1 1 0%;
 `;

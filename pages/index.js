@@ -40,11 +40,8 @@ export default function Home() {
             task,
           },
         ]);
-
         stateReset(e);
         alert("입력 완료!");
-
-        console.log(todos);
       } else {
         alert("날짜를 올바른 형식으로 입력해주세요!");
       }
@@ -54,7 +51,6 @@ export default function Home() {
     const newTodos = [...todos];
     newTodos.splice(id, 1);
     setTodoList(newTodos);
-    console.log("완료클릭");
   };
 
   return (

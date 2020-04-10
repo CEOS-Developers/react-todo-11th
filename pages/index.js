@@ -34,19 +34,23 @@ export default function Home() {
       console.log(dateFlag + taskFlag);
       alert("모든 항목을 입력해주세요!");
     } else {
-      setTodoList([
-        ...todos,
-        {
-          id: todos.length,
-          date,
-          task,
-        },
-      ]);
+      if (date.length === 8 && date > 20200101) {
+        setTodoList([
+          ...todos,
+          {
+            id: todos.length,
+            date,
+            task,
+          },
+        ]);
 
-      stateReset(e);
-      alert("입력 완료!");
+        stateReset(e);
+        alert("입력 완료!");
 
-      console.log(todos);
+        console.log(todos);
+      } else {
+        alert("날짜를 올바른 형식으로 입력해주세요!");
+      }
     }
   };
 

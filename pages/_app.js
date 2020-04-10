@@ -23,6 +23,7 @@ class PickkApp extends App {
             font-size: 0.1rem;
             overflow-x: hidden;
             width: 100%;
+            color: white;
           }
           ::-webkit-scrollbar {
             display: none;

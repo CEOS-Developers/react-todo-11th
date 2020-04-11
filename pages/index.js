@@ -6,26 +6,15 @@ import TodoList from "../components/todo-list";
 import styled from "styled-components";
 
 export default function Home() {
-  const [date, setDate] = useState("");
-  const [todo, setTodo] = useState("");
   const [todoID, setTodoID] = useState(0);
   const [todoList, setTodoList] = useState([]);
 
-  // 값이 바뀔때마다 실행
-  const onChangeTodo = (e) => {
-    setTodo(e.target.value);
-  };
-  const onChangeDate = (e) => {
-    //입력을 8자리 넘어가면 받지 않도록 설정
-    if (String(e.target.value).length <= 8) setDate(e.target.value);
-  };
-
-  const initForm = () => {
+  const initForm = (setDate, setTodo) => {
     setDate("");
     setTodo("");
   };
   // 투두 데이터 추가
-  const addItem = (e) => {
+  const addItem = (e, date, todo) => {
     e.preventDefault();
     if (date == "" || todo == "") {
       alert("모든 항목을 입력해주세요!");
@@ -34,10 +23,8 @@ export default function Home() {
       alert("날짜를 올바른 형식으로 입력해주세요!");
       return;
     }
-
     e.target.reset();
     todoList.push({ date: date, todo: todo, id: todoID });
-    initForm();
     setTodoID(todoID + 1);
     alert("입력되었습니다!");
   };
@@ -53,13 +40,7 @@ export default function Home() {
     <Wrapper>
       <Title>리액트-투두</Title>
       <Contents>
-        <MemoizedTodoInput
-          date={date}
-          todo={todo}
-          onChangeDate={onChangeDate}
-          onChangeTodo={onChangeTodo}
-          addItem={addItem}
-        />
+        <MemoizedTodoInput addItem={addItem} initForm={initForm} />
         <EmtpySpace />
         <TodoList todoList={todoList} deleteItem={deleteItem} />
       </Contents>

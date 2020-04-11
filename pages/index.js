@@ -1,30 +1,55 @@
-import React from "react";
 
-import TodoInput from "../components/todo-input";
-import TodoList from "../components/todo-list";
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-import styled from "styled-components";
+import TodoInput from '../src/components/todo/input';
+import TodoList from '../src/components/todo/list';
+
+import { BACKGROND_COLOR } from '../src/components/atoms/colors';
 
 export default function Home() {
+  const [todos, setTodos] = useState([]);
+
+  const handleAdd = (todo) => {
+    setTodos([...todos, todo]);
+  };
+
+  const handleComplete = (index) => () => {
+    setTodos(todos.filter((_, i) => i !== index));
+  };
+
   return (
     <Wrapper>
-      <Contents>
-        <TodoInput />
-        <TodoList />
-      </Contents>
+      <Title>리액트-투두</Title>
+      <ContentWrapper>
+        <TodoInput onSubmit={handleAdd} />
+        <Space />
+        <TodoList todos={todos} onComplete={handleComplete} />
+      </ContentWrapper>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  height: 100vh;
+  min-height: 100vh;
+  background-color: ${BACKGROND_COLOR};
+  padding: 4rem 5rem;
 `;
 
-const Contents = styled.div`
-  border: solid 1px black;
+const ContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px 20px;
-  margin: 20px 10px;
+`;
+
+const Title = styled.h1`
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  font-weight: 600;
+`;
+
+const Space = styled.div`
+  flex: 1;
 `;

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
@@ -22,7 +23,7 @@ export default function Home() {
       <Title>리액트-투두</Title>
       <ContentWrapper>
         <TodoInput onSubmit={handleAdd} />
-        <div style={{ flex: 1 }} />
+        <Space />
         <TodoList todos={todos} onComplete={handleComplete} />
       </ContentWrapper>
     </Wrapper>
@@ -47,4 +48,8 @@ const Title = styled.h1`
   margin-bottom: 3rem;
   font-size: 3rem;
   font-weight: 600;
+`;
+
+const Space = styled.div`
+  flex: 1;
 `;

@@ -1,4 +1,4 @@
-# react-todo-11th
+# react-todo-11th 모범답안
 
 1. `atoms, molecules`로 자주 쓰는, 작은 단위의 component들을 분리했습니다.
 2. todo와 관련된 컴포넌트들은 todo 디렉토리에 분리했습니다.

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import MemoizedTodoInput from "../components/todo-input";
+import { MemoizedTodoInput } from "../components/todo-input";
 import TodoList from "../components/todo-list";
 
 import styled from "styled-components";
@@ -20,6 +20,10 @@ export default function Home() {
     if (String(e.target.value).length <= 8) setDate(e.target.value);
   };
 
+  const initForm = () => {
+    setDate("");
+    setTodo("");
+  };
   // 투두 데이터 추가
   const addItem = (e) => {
     e.preventDefault();
@@ -33,8 +37,7 @@ export default function Home() {
 
     e.target.reset();
     todoList.push({ date: date, todo: todo, id: todoID });
-    setDate("");
-    setTodo("");
+    initForm();
     setTodoID(todoID + 1);
     alert("입력되었습니다!");
   };

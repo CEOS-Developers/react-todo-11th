@@ -1,40 +1,47 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-import TodoInput from "../components/todo-input";
-import TodoList from "../components/todo-list";
+import TodoInput from '../src/components/todo/input';
+import TodoList from '../src/components/todo/list';
 
-import styled from "styled-components";
-
-const color = "#9bc5c3";
+import { BACKGROND_COLOR } from '../src/components/atoms/colors';
 
 export default function Home() {
   const [todos, setTodos] = useState([]);
 
+  const handleAdd = (todo) => {
+    setTodos([...todos, todo]);
+  };
+
+  const handleComplete = (index) => () => {
+    setTodos(todos.filter((_, i) => i !== index));
+  };
+
   return (
     <Wrapper>
       <Title>리액트-투두</Title>
-      <Contents>
-        <TodoInput setTodos={setTodos} />
-        <div style={{ flex: "0.3" }} />
-        <TodoList todos={todos} setTodos={setTodos} />
-      </Contents>
+      <ContentWrapper>
+        <TodoInput onSubmit={handleAdd} />
+        <div style={{ flex: 1 }} />
+        <TodoList todos={todos} onComplete={handleComplete} />
+      </ContentWrapper>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
   min-height: 100vh;
-  background-color: ${color};
+  background-color: ${BACKGROND_COLOR};
   padding: 4rem 5rem;
 `;
 
-const Contents = styled.div`
+const ContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 `;
 
-const Title = styled.p`
+const Title = styled.h1`
   padding: 0;
   margin: 0;
   margin-bottom: 3rem;

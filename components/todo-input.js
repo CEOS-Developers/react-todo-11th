@@ -6,23 +6,23 @@ export default function TodoInput(props) {
   // value 값이 처음에 없어서 undefined가 되면 오류가 발생할 수 있다고하므로, || ""을 추가해준다.
   return (
     <Wrapper onSubmit={addItem}>
-      <DateWrapper>
-        <DateLabel>시간</DateLabel>
+      <InputWrapper>
+        <InputLabel>시간</InputLabel>
         <DateInput
           placeholder="날짜를 입력하세요 (ex.20200425)"
           type="number"
           value={date || ""}
           onChange={onChangeDate}
         ></DateInput>
-      </DateWrapper>
-      <TodoWrapper>
-        <TodoLabel>TODO</TodoLabel>
+      </InputWrapper>
+      <InputWrapper>
+        <InputLabel>TODO</InputLabel>
         <TodoInputText
           placeholder="할 일을 입력하세요 (ex.현우 생일 파티)"
           value={todo || ""}
           onChange={onChangeTodo}
         ></TodoInputText>
-      </TodoWrapper>
+      </InputWrapper>
       <RegisterBtn>등록</RegisterBtn>
     </Wrapper>
   );
@@ -42,19 +42,13 @@ const Wrapper = styled.form`
   flex: 1;
 `;
 
-const DateWrapper = styled.div`
+const InputWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 3rem;
-`;
-
-const DateLabel = styled.p`
-  font-size: 1.5rem;
-  padding: 0px;
-  margin: 0px;
 `;
 
 const DateInput = styled.input`
@@ -63,16 +57,7 @@ const DateInput = styled.input`
   padding: 0.5rem 0.8rem;
 `;
 
-const TodoWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 3rem;
-`;
-
-const TodoLabel = styled.p`
+const InputLabel = styled.p`
   font-size: 1.5rem;
   padding: 0px;
   margin: 0px;

@@ -1,30 +1,8 @@
 # react-todo-11th
 
-## 실행 방법
-
-```
-npm install
-npm run start
-```
-
-- npm install : 필요한 모든 패키지를 설치합니다. 처음 1번만 실행하면 됩니다.
-- npm run dev : react 어플리케이션을 브라우저에서 실행합니다.
-
-## 배포 방법
-
-- now에 회원가입하고 now를 설치합니다.
-
-1. https://zeit.co 에서 회원가입합니다.
-2. 터미널에서 npm i -g now를 입력해 now를 글로벌로 설치합니다.
-3. 명령 프롬프트에서 프로젝트 폴더에 들어간 후 now를 입력합니다.
-4. ID/PW를 입력합니다.
-5. zeit 가입시 입력한 이메일에서 인증 링크를 클릭합니다. <인증완료>
-6. 다시 프로젝트 폴더에서 now를 입력하면 자동으로 생성된 url에 배포됩니다!
-
-## 미션 설명
-
-[미션 설명](./docs/mission-description/README.md)
-
-## 미션 제출 방법
-
-[미션 제출 방법](./docs/how-to-submit/README.md)
+1. `atoms, molecules`로 자주 쓰는, 작은 단위의 component들을 분리했습니다.
+2. todo와 관련된 컴포넌트들은 todo 디렉토리에 분리했습니다.
+3. `React.memo`로 리렌더링 최적화를 적용했습니다.
+4. `handleComplete` 함수에서 2중첩 화살표 함수를 사용했습니다.
+5. `handleFormChange, isValidForm, initForm`등 기능별로 함수를 분리했습니다. 또 위 함수들은 `input component` 내부에서 정의해 캡슐화시켰습니다.
+6. `TodoItem`의 `key`로 `JSON.stringify(item)`을 넘겼습니다. 별도의 id값이 없을 때 유용한 방법입니다.

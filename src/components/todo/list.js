@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import TodoItem from './item';
 
-export default function TodoList(props) {
+function TodoList(props) {
   const { todos, setTodos } = props;
 
   const handleComplete = (index) => () => {
@@ -24,6 +24,11 @@ export default function TodoList(props) {
     </Wrapper>
   );
 }
+
+export default React.memo(
+  TodoList,
+  (prev, next) => prev.todos.length === next.todos.length
+);
 
 const Wrapper = styled.div`
   font-size: 18px;

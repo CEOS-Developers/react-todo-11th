@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { Button, Row, P } from '../atoms';
 
-export default function TodoItem(props) {
+function TodoItem(props) {
   const { time, content } = props;
 
   return (
@@ -18,6 +18,11 @@ export default function TodoItem(props) {
     </Wrapper>
   );
 }
+
+export default React.memo(
+  TodoItem,
+  (prev, next) => prev.time === next.time && prev.content === next.content
+);
 
 const Wrapper = styled.div`
   display: flex;

@@ -4,22 +4,21 @@ import styled from "styled-components";
 export default function TodoInput(props) {
   const { addItem, initForm } = props;
 
-  const [date, setDate] = useState("");
-  const [todo, setTodo] = useState("");
+  const [form, setForm] = useState({ date: "", todo: "" });
 
-  const onChangeTodo = (e) => {
-    setTodo(e.target.value);
-  };
-  const onChangeDate = (e) => {
-    //입력을 8자리 넘어가면 받지 않도록 설정
-    if (String(e.target.value).length <= 8) setDate(e.target.value);
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setForm({
+      ...form,
+      [name]: name === "date" ? value.slice(0, 8) : value,
+    });
   };
 
   // value 값이 처음에 없어서 undefined가 되면 오류가 발생할 수 있다고하므로, || ""을 추가해준다.
   return (
     <Wrapper
       onSubmit={() => {
-        addItem(event, date, todo);
+        addItem(event, form.date, form.todo);
         initForm(setDate, setTodo);
       }}
     >
@@ -28,16 +27,18 @@ export default function TodoInput(props) {
         <DateInput
           placeholder="날짜를 입력하세요 (ex.20200425)"
           type="number"
-          value={date || ""}
-          onChange={onChangeDate}
+          value={form.date || ""}
+          name="date"
+          onChange={handleFormChange}
         ></DateInput>
       </InputWrapper>
       <InputWrapper>
         <InputLabel>TODO</InputLabel>
         <TodoInputText
           placeholder="할 일을 입력하세요 (ex.현우 생일 파티)"
-          value={todo || ""}
-          onChange={onChangeTodo}
+          value={form.todo || ""}
+          name="todo"
+          onChange={handleFormChange}
         ></TodoInputText>
       </InputWrapper>
       <RegisterBtn>등록</RegisterBtn>

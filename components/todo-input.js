@@ -7,7 +7,7 @@ export default function TodoInput(props) {
   return (
     <Wrapper onSubmit={addItem}>
       <DateWrapper>
-        <DateDesc>시간</DateDesc>
+        <DateLabel>시간</DateLabel>
         <DateInput
           placeholder="날짜를 입력하세요 (ex.20200425)"
           type="number"
@@ -16,7 +16,7 @@ export default function TodoInput(props) {
         ></DateInput>
       </DateWrapper>
       <TodoWrapper>
-        <TodoDesc>TODO</TodoDesc>
+        <TodoLabel>TODO</TodoLabel>
         <TodoInputText
           placeholder="할 일을 입력하세요 (ex.현우 생일 파티)"
           value={todo || ""}
@@ -51,7 +51,7 @@ const DateWrapper = styled.div`
   margin-bottom: 3rem;
 `;
 
-const DateDesc = styled.p`
+const DateLabel = styled.p`
   font-size: 1.5rem;
   padding: 0px;
   margin: 0px;
@@ -72,7 +72,7 @@ const TodoWrapper = styled.div`
   margin-bottom: 3rem;
 `;
 
-const TodoDesc = styled.p`
+const TodoLabel = styled.p`
   font-size: 1.5rem;
   padding: 0px;
   margin: 0px;

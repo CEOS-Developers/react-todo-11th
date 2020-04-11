@@ -9,17 +9,21 @@ import { BACKGROND_COLOR } from '../src/components/atoms/colors';
 export default function Home() {
   const [todos, setTodos] = useState([]);
 
-  const handleTodoAdd = (todo) => {
+  const handleAdd = (todo) => {
     setTodos([...todos, todo]);
+  };
+
+  const handleComplete = (index) => () => {
+    setTodos(todos.filter((_, i) => i !== index));
   };
 
   return (
     <Wrapper>
       <Title>리액트-투두</Title>
       <ContentWrapper>
-        <TodoInput onSubmit={handleTodoAdd} />
+        <TodoInput onSubmit={handleAdd} />
         <div style={{ flex: 1 }} />
-        <TodoList todos={todos} setTodos={setTodos} />
+        <TodoList todos={todos} onComplete={handleComplete} />
       </ContentWrapper>
     </Wrapper>
   );

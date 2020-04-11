@@ -4,11 +4,7 @@ import styled from 'styled-components';
 import TodoItem from './item';
 
 function TodoList(props) {
-  const { todos, setTodos } = props;
-
-  const handleComplete = (index) => () => {
-    setTodos(todos.filter((_, i) => i !== index));
-  };
+  const { todos, onComplete } = props;
 
   return (
     <Wrapper>
@@ -18,7 +14,7 @@ function TodoList(props) {
           <TodoItem
             key={JSON.stringify(item)}
             {...item}
-            onComplete={handleComplete(index)}
+            onComplete={onComplete(index)}
           />
         ))}
     </Wrapper>

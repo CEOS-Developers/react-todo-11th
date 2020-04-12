@@ -17,10 +17,6 @@ const Complete = styled.button`
   background-color: rgb(97, 97, 97);
   font-size: 1.5rem;
   outline: none;
-  border-width: initial;
-  border-style: none;
-  border-color: initial;
-  border-image: initial;
   padding: 0.5rem 1rem;
   border-radius: 0.3rem;
 `;
@@ -49,5 +45,4 @@ const Wrapper = styled.div`
   border-width: 1px;
   border-style: solid;
   border-color: black;
-  border-image: initial;
 `;

@@ -23,7 +23,7 @@ export default function TodoInput({addTodo}){
         <Lable>TODO</Lable>
         <Textarea name="content" placeholder='할 일을 입력하세요' onChange={changeInputData}></Textarea>
       </Row>
-      <EnterBtn onClick={() => addTodo({...newTodo})}>등록</EnterBtn>
+      <SunmitButton onClick={() => addTodo({...newTodo})}>등록</SunmitButton>
     </Wrapper>
   );
 }
@@ -69,15 +69,12 @@ const Textarea = styled.textarea`
   padding: 0.5rem 0.8rem;
 `;
 
-const EnterBtn = styled.button`
+const SunmitButton = styled.button`
   color : white;
   background-color: rgb(97, 97, 97);
   font-size: 1.5rem;
   outline: none;
-  border-width: initial;
-  border-style: none;
-  border-color: initial;
-  border-image: initial;
+  border: none;
   padding: 0.5rem 1rem;
   border-radius: 0.3rem;
 `;

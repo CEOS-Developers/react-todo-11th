@@ -42,7 +42,5 @@ const Wrapper = styled.div`
   align-items: flex-start;
   margin-bottom: 3rem;
   padding: 1rem 2rem;
-  border-width: 1px;
-  border-style: solid;
-  border-color: black;
+  border: 1px solid rgb(97, 97, 97);
 `;

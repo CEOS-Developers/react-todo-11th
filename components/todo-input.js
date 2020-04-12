@@ -37,6 +37,7 @@ const Submit = styled.button`
   background-color: rgb(97, 97, 97);
   font-size: 1.5rem;
   outline: none;
+  border-style: none;
   padding: 0.5rem 1rem;
   border-radius: 0.3rem;
 `;
@@ -47,9 +48,7 @@ const DateLabel = styled.p`
 `;
 const DateInputArea = styled.input`
   width: 80%;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(97, 97, 97);
+  border: 1px solid rgb(97, 97, 97);
   padding: 0.5rem 0.8rem;
 `;
 const TodoLabel = styled.p`
@@ -61,9 +60,7 @@ const TaskTextArea = styled.textarea`
   width: 80%;
   height: 30vh;
   resize: none;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(97, 97, 97);
+  border: 1px solid rgb(97, 97, 97);
   padding: 0.5rem 0.8rem;
 `;
 const DateInput = styled.div`
@@ -91,8 +88,6 @@ const Wrapper = styled.div`
   align-items: center;
   height: 37rem;
   flex: 1 1 0%;
-  border-width: 1px;
-  border-style: solid;
-  border-color: black;
+  border: 1px solid black;
   padding: 1rem 2rem;
 `;

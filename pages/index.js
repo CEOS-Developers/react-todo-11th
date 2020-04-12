@@ -8,7 +8,6 @@ import styled from "styled-components";
 export default function Home() {
 
   const [todos, setTodos] = useState([]);
-  const [index, setIndex] = useState(1);
 
   const handleAdd = (todo) => {
 

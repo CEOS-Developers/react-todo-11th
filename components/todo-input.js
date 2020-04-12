@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import styled from "styled-components";
 
-export default function TodoInput({addTodo}){
+export default function TodoInput({onSubmit}){
 
   const [newTodo, setNewTodo] = useState({});
 
@@ -18,7 +18,6 @@ export default function TodoInput({addTodo}){
           name="date" 
           type="number" 
           placeholder="날짜를 입력하세요 (ex.20200404)" 
-          onInput = {(e) => { e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,8)}}
           onChange={handleFormChange}
         />
       </Row>
@@ -30,7 +29,7 @@ export default function TodoInput({addTodo}){
           onChange={handleFormChange}
         />
       </Row>
-      <SunmitButton onClick={() => addTodo({...newTodo})}>등록</SunmitButton>
+      <SunmitButton onClick={() => onSubmit({...newTodo})}>등록</SunmitButton>
     </Wrapper>
   );
 }
@@ -40,7 +39,6 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  -webkit-box-align: center;
   align-items: center;
   height: 37rem;
   flex: 1

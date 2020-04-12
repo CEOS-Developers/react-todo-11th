@@ -11,7 +11,7 @@ export default function TodoInput({addTodo}){
   }
 
   return (
-    <InputWrapper>
+    <Wrapper>
       <TimeBox>
         <Time>시간</Time>
         <InputDay name="date" type="number" placeholder="날짜를 입력하세요 (ex.20200404)" 
@@ -24,23 +24,20 @@ export default function TodoInput({addTodo}){
         <InputTodo name="content" placeholder='할 일을 입력하세요' onChange={changeInputData}></InputTodo>
       </TodoBox>
       <EnterBtn onClick={() => addTodo({...newTodo})}>등록</EnterBtn>
-    </InputWrapper>
+    </Wrapper>
   );
 }
 
 
-const InputWrapper = styled.div`
+const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   -webkit-box-align: center;
   align-items: center;
   height: 37rem;
-  flex: 1 1 0%;
-  border-width: 1px;
-  border-style: solid;
-  border-color: black;
-  border-image: initial;
+  flex: 1
+  border: 1px, solid, black;
   padding: 1rem 2rem;
 `;
 

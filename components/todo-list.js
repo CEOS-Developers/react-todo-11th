@@ -4,11 +4,11 @@ import TodoItem from "./todo-item";
 
 import styled from "styled-components";
 
-export default function TodoList({todos, todoRemove}) {
+export default function TodoList({todos, onDelete}) {
 
   return (
     <Wrapper>
-        {todos.map(todo => <TodoItem key={todo.id} {...todo} todoRemove={todoRemove}/>)}
+      {todos.map((todo, index) => <TodoItem key={JSON.stringify(todo)} {...todo} onDelete={onDelete(index)} />)}
     </Wrapper>
   );
 }

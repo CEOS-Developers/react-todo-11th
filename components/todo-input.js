@@ -14,14 +14,21 @@ export default function TodoInput({addTodo}){
     <Wrapper>
       <Row>
         <Lable>시간</Lable>
-        <Input name="date" type="number" placeholder="날짜를 입력하세요 (ex.20200404)" 
-        onInput = {(e) =>{e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,8)}}
-        onChange={handleFormChange}
+        <Input 
+          name="date" 
+          type="number" 
+          placeholder="날짜를 입력하세요 (ex.20200404)" 
+          onInput = {(e) => { e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,8)}}
+          onChange={handleFormChange}
         />
       </Row>
       <Row>
         <Lable>TODO</Lable>
-        <Textarea name="content" placeholder='할 일을 입력하세요' onChange={handleFormChange}></Textarea>
+        <Textarea 
+          name="content" 
+          placeholder='할 일을 입력하세요' 
+          onChange={handleFormChange}
+        />
       </Row>
       <SunmitButton onClick={() => addTodo({...newTodo})}>등록</SunmitButton>
     </Wrapper>

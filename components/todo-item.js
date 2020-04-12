@@ -2,15 +2,14 @@ import React, { useState } from 'react';
 
 import styled from "styled-components";
 
-export default function TodoItem({ id, content, date, todoRemove }) {
+export default function TodoItem({ todo ,onDelete}) {
   return (
     <Wrapper>
-      <TodoItemBox>
+      <Row>
         <Todo>{content}</Todo>
-        <Day>{date}
-        <ClearBtn onClick={(() => {todoRemove(id)})}>완료</ClearBtn>
-        </Day>
-      </TodoItemBox>
+        <Date>{date}</Date>
+      </Row>
+        <DeleteButton onClick={onDelete}> 완료 </DeleteButton>
     </Wrapper>
     );
 }
@@ -19,18 +18,14 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
-const TodoItemBox = styled.div`
+const Row = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
   margin-bottom: 3rem;
   padding: 1rem 2rem;
-  border-width: 1px;
-  border-style: solid;
-  border-color: black;
-  border-image: initial;
+  border: 1px, solid, black;
 `;
 
 const Todo= styled.p`
@@ -41,7 +36,7 @@ const Todo= styled.p`
   margin: 0px;
 `;
 
-const Day= styled.p`
+const Date= styled.p`
   font-size: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -49,15 +44,13 @@ const Day= styled.p`
   margin: 0px;
 `;
 
-const ClearBtn = styled.button`
+const DeleteButton = styled.button`
   color: white;
   background-color: rgb(97, 97, 97);
   font-size: 1.5rem;
   outline: none;
-  border-width: initial;
-  border-style: none;
-  border-color: initial;
-  border-image: initial;
   padding: 0.5rem 1rem;
+  border: none;
   border-radius: 0.3rem;
+  margin-left: auto;
 `;

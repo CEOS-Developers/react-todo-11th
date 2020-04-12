@@ -10,8 +10,11 @@ export default function Home() {
   const [todos, setTodos] = useState([]);
   const [index, setIndex] = useState(1);
 
-  const addTodo = ({content, date}) => {
-    if ((content === undefined) || (date === undefined)) {
+  const handleAdd = (todo) => {
+
+    const {content, date} = todo;
+
+    if (content === "" || date === "") {
       alert('모든 항목을 입력해주세요!');
       return;
     }
@@ -21,28 +24,26 @@ export default function Home() {
       return;
     }
 
-    const todo = {
-      id: index,
+    const newTodo = {
       content,
-      date,
-      checked: false
+      date
     }
-    setTodos(todos.concat(todo)); 
-    setIndex(index + 1);
+
+    setTodos(todos.concat(newTodo)); 
     alert('입력 완료!')
   }
 
-  const todoRemove = (id) => {
-    setTodos(todos.filter(todo => todo.id !== id))
+  const handleDelete = (index) = ()=> {
+    setTodos([...todo.slice(0,index), ...todo.slice(index+1, todo.length)]);
   }
 
   return (
     <Wrapper>
       <Header>리액트-투두</Header>
       <Contents>
-        <TodoInput addTodo = {addTodo}/>
+        <TodoInput onSubmit = {handleAdd}/>
         <Space/>
-        <TodoList todos={todos} todoRemove = {todoRemove}/>
+        <TodoList {...{todos}} onDelete = {handleDelete}/>
       </Contents>
     </Wrapper>
   );
@@ -61,13 +62,12 @@ const Contents = styled.div`
 
 `;
 
-const Header = styled.p`
+const Header = styled.h1`
   font-size: 3rem;
   font-weight: 600;
-  padding: 0px;
   margin: 0px 0px 3rem;
 `;
 
 const Space = styled.div`
-  flex: 0.3;
+  flex: 1;
 `;

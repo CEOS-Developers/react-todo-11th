@@ -12,17 +12,17 @@ export default function TodoInput({addTodo}){
 
   return (
     <Wrapper>
-      <TimeBox>
-        <Time>시간</Time>
-        <InputDay name="date" type="number" placeholder="날짜를 입력하세요 (ex.20200404)" 
+      <Row>
+        <Lable>시간</Lable>
+        <Input name="date" type="number" placeholder="날짜를 입력하세요 (ex.20200404)" 
         onInput = {(e) =>{e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,8)}}
         onChange={changeInputData}
         />
-      </TimeBox>
-      <TodoBox>
-        <Todo>TODO</Todo>
-        <InputTodo name="content" placeholder='할 일을 입력하세요' onChange={changeInputData}></InputTodo>
-      </TodoBox>
+      </Row>
+      <Row>
+        <Lable>TODO</Lable>
+        <Textarea name="content" placeholder='할 일을 입력하세요' onChange={changeInputData}></Textarea>
+      </Row>
       <EnterBtn onClick={() => addTodo({...newTodo})}>등록</EnterBtn>
     </Wrapper>
   );
@@ -41,55 +41,31 @@ const Wrapper = styled.div`
   padding: 1rem 2rem;
 `;
 
-const TimeBox = styled.div`
+const Row = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  -webkit-box-pack: justify;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 3rem;
 `;
 
-const Time = styled.p`
+const Lable = styled.p`
   font-size: 1.5rem;
-  padding: 0px;
   margin: 0px;
 `;
 
-const InputDay= styled.input`
+const Input= styled.input`
   width: 80%;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(97, 97, 97);
-  border-image: initial;
+  border: 1px, soild, rgb(97, 97, 97);
   padding: 0.5rem 0.8rem;
 `;
 
-const TodoBox= styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 3rem;
-`;
-
-const Todo = styled.p`
-  font-size: 1.5rem;
-  padding: 0px;
-  margin: 0px;
-`;
-
-const InputTodo = styled.textarea`
+const Textarea = styled.textarea`
   width: 80%;
   height: 30vh;
   resize: none;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(97, 97, 97);
-  border-image: initial;
+  border: 1px, solid, rgb(97, 97, 97);
   padding: 0.5rem 0.8rem;
 `;
 

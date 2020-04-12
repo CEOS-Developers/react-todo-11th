@@ -8,7 +8,7 @@ export default function TodoList({todos, onDelete}) {
 
   return (
     <Wrapper>
-      {todos.map((todo, index) => <TodoItem key={JSON.stringify(todo)} {...todo} onDelete={onDelete(index)} />)}
+      {todos.map((todo, index) => <TodoItem key={JSON.stringify(todo)} {...{todo}} onDelete={onDelete(index)} />)}
     </Wrapper>
   );
 }

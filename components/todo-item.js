@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import styled from "styled-components";
 
-export default function TodoItem({ todo ,onDelete}) {
+export default function TodoItem({todo ,onDelete}) {
   return (
     <Wrapper>
       <Row>

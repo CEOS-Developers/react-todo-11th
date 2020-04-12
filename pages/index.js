@@ -27,12 +27,12 @@ export default function Home() {
       content,
       date
     }
-
+  
     setTodos(todos.concat(newTodo)); 
     alert('입력 완료!')
   }
 
-  const handleDelete = (index) = ()=> {
+  const handleDelete = (index) = () => {
     setTodos([...todo.slice(0,index), ...todo.slice(index+1, todo.length)]);
   }
 

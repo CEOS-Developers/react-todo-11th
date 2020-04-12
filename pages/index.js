@@ -5,8 +5,6 @@ import TodoList from "../components/todo-list";
 
 import styled from "styled-components";
 
-let taskFlag = 0;
-let dateFlag = 0;
 export default function Home() {
   const [date, setDate] = useState();
   const [task, setTask] = useState();
@@ -14,38 +12,41 @@ export default function Home() {
 
   const onChangeTask = (e) => {
     setTask(e.target.value);
-    taskFlag++;
   };
   const onChangeDate = (e) => {
     setDate(e.target.value);
-    dateFlag++;
   };
 
   const stateReset = (e) => {
-    dateFlag = 0;
-    taskFlag = 0;
     setDate("");
     setTask("");
   };
-  const addTodo = (e) => {
-    if (dateFlag === 0 || taskFlag === 0) {
+
+  const validateTodo = () => {
+    let isValid = false;
+    let isDateValid = date.length === 8 && date > 20200101;
+    let isTaskValid = task.length > 0;
+    if (!isDateValid) {
+      alert("날짜를 올바른 형식으로 입력해주세요!");
+    } else if (!isTaskValid) {
       alert("모든 항목을 입력해주세요!");
-    } else {
-      if (date.length === 8 && date > 20200101) {
-        setTodoList([
-          ...todos,
-          {
-            id: todos.length,
-            date,
-            task,
-          },
-        ]);
-        stateReset(e);
-        alert("입력 완료!");
-      } else {
-        alert("날짜를 올바른 형식으로 입력해주세요!");
-      }
     }
+    isValid = isDateValid && isTaskValid;
+    return isValid;
+  };
+
+  const addTodo = (e) => {
+    if (!validateTodo()) return;
+    setTodoList([
+      ...todos,
+      {
+        id: todos.length,
+        date,
+        task,
+      },
+    ]);
+    stateReset(e);
+    alert("입력 완료!");
   };
 
   const onClickComplete = (id) => {

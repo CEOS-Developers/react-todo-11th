@@ -1,20 +1,98 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-export default function TodoInput() {
+export default function TodoInput(props) {
+  const { addItem, initForm } = props;
+
+  const [form, setForm] = useState({ date: "", todo: "" });
+
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setForm({
+      ...form,
+      [name]: name === "date" ? value.slice(0, 8) : value,
+    });
+  };
+
+  // value 값이 처음에 없어서 undefined가 되면 오류가 발생할 수 있다고하므로, || ""을 추가해준다.
   return (
-    <Wrapper>
-      리액트-투두
-      <br />
-      시간을 입력하는 칸
-      <br />
-      Todo를 입력하는 칸
+    <Wrapper
+      onSubmit={() => {
+        addItem(event, form.date, form.todo);
+        initForm(setDate, setTodo);
+      }}
+    >
+      <InputWrapper>
+        <InputLabel>시간</InputLabel>
+        <DateInput
+          placeholder="날짜를 입력하세요 (ex.20200425)"
+          type="number"
+          value={form.date || ""}
+          name="date"
+          onChange={handleFormChange}
+        ></DateInput>
+      </InputWrapper>
+      <InputWrapper>
+        <InputLabel>TODO</InputLabel>
+        <TodoInputText
+          placeholder="할 일을 입력하세요 (ex.현우 생일 파티)"
+          value={form.todo || ""}
+          name="todo"
+          onChange={handleFormChange}
+        ></TodoInputText>
+      </InputWrapper>
+      <RegisterBtn>등록</RegisterBtn>
     </Wrapper>
   );
 }
+export const MemoizedTodoInput = React.memo(TodoInput);
 
-const Wrapper = styled.div`
-  border: solid 1px;
+const Wrapper = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 37rem;
+  flex: 1 1 0%;
+  padding: 1rem 2rem;
+  border: solid 1px black;
   font-size: 18px;
   flex: 1;
+`;
+
+const InputWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+`;
+
+const DateInput = styled.input`
+  width: 80%;
+  border: 1px solid rgb(97, 97, 97);
+  padding: 0.5rem 0.8rem;
+`;
+
+const InputLabel = styled.p`
+  font-size: 1.5rem;
+  padding: 0px;
+  margin: 0px;
+`;
+
+const TodoInputText = styled.textarea.attrs({})`
+  width: 80%;
+  height: 30vh;
+  border: 1px solid rgb(97, 97, 97);
+  padding: 0.5rem 0.8rem;
+`;
+
+const RegisterBtn = styled.button`
+  color: white;
+  background: rgb(97, 97, 97);
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.3rem;
 `;

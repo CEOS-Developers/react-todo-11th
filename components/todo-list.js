@@ -3,17 +3,29 @@ import styled from "styled-components";
 
 import TodoItem from "./todo-item";
 
-export default function TodoList() {
+export default function TodoList(props) {
+  const { todoList, deleteItem } = props;
+
   return (
     <Wrapper>
-      Todo list가 들어가는 자리입니다!
-      <TodoItem />
+      {todoList
+        .sort((a, b) => {
+          return a.date - b.date;
+        })
+        .map((todoData) => (
+          <TodoItem
+            key={todoData.id}
+            id={todoData.id}
+            date={todoData.date}
+            todo={todoData.todo}
+            deleteItem={deleteItem}
+          />
+        ))}
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  border: solid 1px;
   font-size: 18px;
-  flex: 1;
+  flex: 1 1 0%;
 `;
